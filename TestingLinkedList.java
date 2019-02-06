@@ -17,7 +17,13 @@ public class TestWorker {
  @DisplayName("add() Method Test")
  public void testAddMethod()
  {
-   assertEquals(list1.add(),"I'm working already!", "Mismatch between test text and method text" );
+   int testData = 2;
+
+   list1.add(2);
+   list1.add(3);
+   list1.add(4);
+
+   assertTrue(list1.add(list1, testData) == false);
  }
 
 
@@ -26,15 +32,26 @@ public class TestWorker {
  public void testRemoveMethod()
  {
 
-   assertTrue(list1.remove() == "I'm taking a self-care day!", "Test failed - Mismatch between test text and method text");
+   int testData = 5;
+
+  /* list1.add(2);
+   list1.add(3);
+   list1.add(4); */
+
+   assertFalse(list1.remove(list1, testData) == true);
  }
 
 @Test
  @DisplayName("size() Method Test")
  public void testSizeMethod()
  {
+   int testData = 3;
 
-   assertNotEquals(list1.size() == "I'm taking a 2 hour lunch brb", "Test failed - Mismatch between test text and method text");
+  /* list1.add(2);
+   list1.add(3);
+   list1.add(4); */
+
+   assertEquals(testData, list1.size(list1));
  }
 
 
@@ -42,9 +59,8 @@ public class TestWorker {
 @DisplayName("equals() Method Test")
 public void testEqualsMethod()
 {
+  list2 = list1
 
-  assertNotEquals(list1.equals() == "I'm taking a 2 hour lunch brb", "Test failed - Mismatch between test text and method text");
-}
-
+  assertTrue(list1.equals(list1, list2) == true);
 
 }
