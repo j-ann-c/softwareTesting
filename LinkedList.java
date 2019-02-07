@@ -1,4 +1,4 @@
-package assignment_1;
+package Linked;
 
 public class LinkedList {
 
@@ -47,29 +47,40 @@ public class LinkedList {
 
 	public boolean remove(LinkedList list, int data)
 	{
-			 Node nodePtr = list.head, prevNode = null;
-   		 boolean flag = false;
 
-        if (nodePtr != null && nodePtr.data == data) {
-            list.head = nodePtr.next;
-            flag = true;
-            return flag;
-            }
 
-          while (nodePtr != null && nodePtr.data != data) {
+		Node nodePtr = list.head;
+		Node prevNode = null;
+   		//boolean flag = false;
+
+   		if (nodePtr == null)
+   			return false;
+
+
+   		if(nodePtr.data == data) {
+   			list.head = nodePtr.next;
+   			return true;
+   		}
+
+
+       while (nodePtr.next != null && nodePtr.data != data) {
             prevNode = nodePtr;
             nodePtr = nodePtr.next;
         }
 
-        if (nodePtr) {
-            prevNode.next = nodePtr.next;
-            return true;
+        if (nodePtr.next == null) {
+            return false;
         }
 
-        if (!nodePtr)
-            return false;
+        if (nodePtr.data == data) {
+            prevNode.next = nodePtr.next;
+        	return true;
 
-      	return flag;
+        }
+
+      	return false;
+
+
     }
 
 
@@ -78,7 +89,7 @@ public class LinkedList {
 *	int size(int): returns the number of elements in this list.
 ********************************************************/
 
-			public static int size(LinkedList list)
+			public int size(LinkedList list)
 				  {
 				      Node nodePtr = list.head;
 				      int size = 0;

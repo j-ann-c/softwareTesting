@@ -1,6 +1,6 @@
-package assignment_1;
+package Linked;
 
- class Node {
+public class Node {
 
 	int data;
 	Node next;
